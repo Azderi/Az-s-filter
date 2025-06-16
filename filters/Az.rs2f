@@ -1,0 +1,997 @@
+meta {
+name = "Az's filter";
+    description = "Az's filter.
+	
+The filter is built around naturally appearing ground-items, meaning it will not have special interactions for items crafted from uniques.
+
+Value tiers should almost never trigger since every unique on the clog have been defined to use the unique sound. Don't worry about gooning sound.
+
+16/06/2025";
+}
+
+#define VAR_OWNERSHIP_HIDEOTHER true
+
+//ToB+ToA
+#define CONST_TAKEABLE(_) (accountType:0 || !ownership:2)
+#define VAR_OWNERSHIP_IGNORE ["Dawnbringer"]
+
+if (!CONST_TAKEABLE(0) && VAR_OWNERSHIP_HIDEOTHER && !name:VAR_OWNERSHIP_IGNORE) {
+  hidden = true;
+}
+if (name:"Water container" && ownership:2) HI_PURPLE
+
+//Food
+if (id:385) TRANS_GOLD //shark
+if (id:391) TRANS_GOLD
+if (id:13441) TRANS_GOLD //angler
+if (id:7946) TRANS_GOLD
+if (name:"* pizza") TRANS_GOLD
+if (id:7218) TRANS_GOLD
+if (id:3144) TRANS_GOLD
+if (name:"* potato") F_TIER
+
+
+
+// CoX
+TEXT_HIGHLIGHT("Overload*", "bb333333")
+TEXT_HIGHLIGHT("Prayer enhance*", MAGENTA)
+TEXT_HIGHLIGHT("Revitalisation*", "bbe91e63")
+TEXT_HIGHLIGHT("Xeric's aid*", YELLOW)
+TEXT_HIGHLIGHT("Buchu leaf", "bbAC2315")
+TEXT_HIGHLIGHT("Grimy buchu leaf", "bbAC2315")
+TEXT_HIGHLIGHT("Buchu seed", "bbAC2315")
+TEXT_HIGHLIGHT("Noxifer seed", "bb7C1ADF")
+TEXT_HIGHLIGHT("Grimy noxifer", "bb7C1ADF")
+TEXT_HIGHLIGHT("Noxifer", "bb7C1ADF")
+TEXT_HIGHLIGHT("Golpar", "bb18BF8C")
+TEXT_HIGHLIGHT("Grimy golpar", "bb18BF8C")
+TEXT_HIGHLIGHT("Golpar seed", "bb18BF8C")
+TEXT_HIGHLIGHT("Endarkened juice", TGOLD)
+TEXT_HIGHLIGHT("Stinkhorn mushroom", "aae91e63")
+TEXT_HIGHLIGHT("Cicely", TPURPLE)
+TEXT_HIGHLIGHT("Mallignum root plank", KHAKI)
+TEXT_HIGHLIGHT("Water-filled gourd vial", TRUNE)
+if (name:"Empty gourd vial") HIDDEN
+
+//Additions and slayer garbage
+
+//Conditional hides
+if (name:"Water rune" && quantity:<50) HIDDEN
+if (name:"Earth rune" && quantity:<50) HIDDEN
+if (name:"Air rune" && quantity:<50) HIDDEN
+if (name:"Fire rune" && quantity:<50) HIDDEN
+if (name:"Coins" && value:<1000) HIDDEN
+if (name:"Coins" && value:>999 && value:< 10000) TRANS_GOLD
+if (name:"Coins") OUT_GOLD
+if (name:"* arrow" && quantity:<3 && value:<3000) HIDDEN
+if (name:"* bolt" && quantity:<3 && value:<3000) HIDDEN
+if (name:"* dart" && quantity:<3 && value:<3000) HIDDEN
+if (name:"Rune arrow" && quantity:<10) HIDDEN
+if (name:"Uncut *" && quantity:<2) F_TIER		//F_TIER -> HIDDEN to hide single gem drops
+if (name:"Uncut *") F_TIER
+if (name:"Pure essence" && quantity:<500) HIDDEN
+
+//Dragonhides and ensouled heads
+UNIQUE_C_TIER("Scaly blue dragonhide")
+if (id:1748) HI_BLACK		//noted black dhide
+if (id:1750) HI_RED		//noted red dhide
+if (id:1752) HI_BLUE		//noted blue dhide
+if (id:1754) HI_GREEN		//noted green dhide
+if (name:"* dragonhide") HIDDEN			//unnoted hides
+if (name:"Ensouled dragon head") HI_RED
+if (name:"Ensouled aviansie head") HI_RED
+if (name:"Ensouled abyssal head") HI_RED
+if (name:"Ensouled dagannoth head") HI_PURPLE
+if (name:"Ensouled hellhound head") HI_PURPLE
+if (name:"Ensouled bloodveld head") HI_PURPLE
+if (name:"Ensouled demon head") HI_PURPLE
+if (name:"Ensouled kalphite head") HI_PURPLE
+if (name:"Ensouled tzhaar head") HI_PURPLE
+if (name:"Ensouled horror head") HI_BLUE
+if (name:"Ensouled troll head") HI_BLUE
+if (name:"Ensouled giant head") HI_BLUE
+if (name:"Ensouled elf head") HI_BLUE
+if (name:"Ensouled*") HI_GREEN
+
+//bars
+if (name:"Adamantite bar" && quantity:<3) HIDDEN
+if (name:"Mithril bar" && quantity:<3) HIDDEN
+if (id:2353 && quantity:<10) HIDDEN			//unnoted steel bar
+if (id:2359 && quantity:<10) HIDDEN			//unnoted mithril bar
+if (id:2361 && quantity:<10) HIDDEN			//unnoted addy bar
+
+//alchables
+if (name:"Mystic * battlestaff") RUNE_ALCH
+if (name:"* battlestaff") ADDY_ALCH
+if (name:"Adamant *" && havalue:>1000 && quantity:<10) ADDY_ALCH
+if (name:"Rune *" && havalue:>1000 && quantity:<10) RUNE_ALCH
+if (name:"Rune *" && quantity:>10) RUNE_NA
+if (name:"Mithril *" && havalue:>1000 && quantity:<10) MITH_ALCH
+if (name:"Rune *") HIDDEN
+
+//herblore + seeds
+if (name:"Grimy*") HERB
+if (name:"Wine of zamorak") HERB_SECONDARY
+if (name:"Potato cactus" && quantity:>1) HERB_SECONDARY
+if (name:"White berries") HERB_SECONDARY
+if (name:"Crushed nest") HERB_SECONDARY
+if (name:"Crushed nest") HERB_SECONDARY
+if (name:"Snape grass" && quantity:>1) HERB_SECONDARY
+if (name:"Limpwurt root") HERB_SECONDARY
+if (name:"Red spiders' eggs" && quantity:>1) HERB_SECONDARY
+if (name:"Ranarr seed") SEED_RARE
+if (name:"Snape grass seed") SEED_RARE
+if (name:"Spirit seed") SEED_RARE
+if (name:"Snapdragon seed") SEED_RARE
+if (name:"* seed") SEED
+if (name:"Snapdragon") HERB
+
+//misc
+if (name:"Ancient brew*") F_TIER
+if (name:"Black *") HIDDEN
+if (name:"Curry") HIDDEN
+if (name:"Vampyre dust") HIDDEN
+if (name:"Burnt bones") HIDDEN
+if (name:"Ancient essence") HI_PURPLE
+if (name:"Dragon arrowtips") C_TIER
+if (name:"Dragon dart tip") C_TIER
+if (name:"Crystal shard") C_TIER
+if (name:"Brimstone key") C_TIER
+TEXT_HIGHLIGHT("Dragonstone bolt*", TRUNE)
+TEXT_HIGHLIGHT("Runite *", TRUNE)
+TEXT_HIGHLIGHT("Dragon bones", "bbaaaaaa")
+TEXT_HIGHLIGHT("Coal*", "bb636363")
+if (name:"Tokkul" && quantity:<1000) HIDDEN
+TEXT_HIGHLIGHT("Tokkul", "bb636363")
+
+// var: item value thresholds
+#define VALUE_TIER_S 10000000 // 10m
+#define VALUE_TIER_A 1000000  // 1m
+#define VALUE_TIER_B 500000   // 500k
+#define VALUE_TIER_C 100000    // 100k
+#define VALUE_TIER_D 10000    // 10k
+#define VALUE_TIER_E 1000     // 5k
+#define VALUE_HIDE 500     // 500gp
+
+#define BROWN "bbD2B287"
+#define LIGHT_BROWN "bbAF6025"
+#define ORANGE "bbF05A23"
+#define CARAMEL "bbF99619"
+#define GOLD "bbD59F00"
+#define BURGUNDY "bb350D0D"
+#define DARK_GREEN "bb09600D"
+#define KHAKI "bbBEB287"
+#define PURPLE "bbFF33AA"
+#define TPURPLE "aaFF33AA"
+#define BLUE "bb2b97f0"
+#define GREEN "bb33DD33"
+#define DARK "99000000"
+#define SCUFFED "99888888"
+#define TRUNE "bb2b97f0"
+#define RUNE "bb3366ff" 
+#define TADDY "aa32cf51"
+#define ADDY "bb229f41"
+#define TGOLD "b5ffdd33"
+#define TRANS "00ffffff"
+
+#define COLOR2(_fg) textColor = _fg; borderColor = _fg;
+#define COLOR3(_fg, _bg) textColor = _fg; borderColor = _fg; backgroundColor = _bg;
+#define HIDE_1(_name) if (name:_name && quantity:<2) { hidden = true; menuTextColor = "bb888888"; }
+#define DARK_BG(_name, _color) if (name:_name) { color = _color; borderColor = _color; backgroundColor = DARK; }
+#define TEXT_HIGHLIGHT(_name, _color) if (name:_name) { color = _color; textAccent = 2; textAccentColor = DARK; icon = CurrentItem();}
+#define POT_HIGHLIGHT(_name, _color) if (name:_name) { color = _color; textAccent = 2; showDespawn = true }
+#define SUPPLY_HIGHLIGHT(_name, _color) if (name:_name) { color = _color; textAccent = 2; }
+
+#define UNIQUE_S_TIER(_name ) if (name:_name) { \
+    COLOR3(RED, DARK) \
+    textAccent = 2; \
+    showLootBeam = true; \
+    fontType = 1; \
+	lootBeamColor = RED; \
+	menuTextColor = RED; \
+	sound = "Az_legendary_unique.wav"; \
+	icon = CurrentItem(); \
+}
+
+#define UNIQUE_S_TIER_GREEN(_name ) if (name:_name) { \
+    COLOR3(GREEN, DARK) \
+    textAccent = 2; \
+    showLootBeam = true; \
+    fontType = 1; \
+	lootBeamColor = GREEN; \
+	menuTextColor = GREEN; \
+	sound = "Az_legendary_unique.wav"; \
+	icon = CurrentItem(); \
+}
+
+#define UNIQUE_S_TIER_BLUE(_name ) if (name:_name) { \
+    COLOR3(BLUE, DARK) \
+    textAccent = 2; \
+    showLootBeam = true; \
+    fontType = 1; \
+	lootBeamColor = BLUE; \
+	menuTextColor = BLUE; \
+	sound = "Az_legendary_unique.wav"; \
+	icon = CurrentItem(); \
+}
+
+
+#define UNIQUE_A_TIER(_name ) if (name:_name) { \
+    COLOR3(PURPLE, DARK) \
+    textAccent = 2; \
+    showLootBeam = true; \
+    lootBeamColor = PURPLE; \
+	menuTextColor = PURPLE; \
+	sound = "Az_epic_unique.wav"; \
+	icon = CurrentItem(); \
+}
+#define UNIQUE_B_TIER(_name) if (name:_name) { \
+    COLOR3(ORANGE, DARK) \
+    textAccent = 2; \
+    showLootBeam = true; \
+    lootBeamColor = ORANGE; \
+    menuTextColor = ORANGE; \
+	sound = "Az_rare_unique.wav"; \
+	icon = CurrentItem(); \
+}
+#define UNIQUE_C_TIER(_name) if (name:_name) { \
+    COLOR3(BLUE, DARK)  \
+    textAccent = 2; \
+    showLootBeam = false; \
+	lootBeamColor = BLUE; \
+	menuTextColor = BLUE; \
+	sound = "Az_uncommon_unique.wav"; \
+	icon = CurrentItem(); \
+}
+
+#define RARE_CUSTOM(_name, _color, _backgroundColor) if (name:_name) { \
+    COLOR3(_color, _backgroundColor) \
+    showLootBeam = true; \
+}
+
+#define UNIQUE_M_TIER(_name ) if (name:_name) { \
+    COLOR3(YELLOW, DARK) \
+    textAccent = 2; \
+    showLootBeam = true; \
+    fontType = 1; \
+	lootBeamColor = YELLOW; \
+	menuTextColor = YELLOW; \
+	icon = CurrentItem(); \
+}
+
+#define S_TIER { \
+    color = RED; \
+    textAccent = 2; \
+    showLootBeam = true; \
+    fontType = 1; \
+	lootBeamColor = RED; \
+	menuTextColor = RED; \
+	sound = "Az_legendary.wav"; \
+	icon = CurrentItem(); \
+}
+#define A_TIER { \
+    color = PURPLE; \
+    textAccent = 2; \
+    showLootBeam = true; \
+    lootBeamColor = PURPLE; \
+	menuTextColor = PURPLE; \
+	sound = "Az_epic.wav"; \
+	icon = CurrentItem(); \
+}
+#define B_TIER { \
+    color = ORANGE; \
+    textAccent = 2; \
+    showLootBeam = true; \
+    lootBeamColor = ORANGE; \
+    menuTextColor = ORANGE; \
+	sound = "Az_rare.wav"; \
+	icon = CurrentItem(); \
+}
+#define C_TIER { \
+    color = BLUE; \
+	textAccent = 2; \
+    menuTextColor = BLUE; \
+	lootBeamColor = BLUE; \
+    showLootBeam = true; \
+	textAccentColor = "99000000"; \
+	sound = "Az_uncommon.wav"; \
+	icon = CurrentItem(); \
+}
+#define D_TIER { \
+textAccent = 2; \
+    color = GREEN; \
+    showLootBeam = false; \
+	menuTextColor = GREEN; \
+	textAccentColor = "99000000"; \
+	icon = CurrentItem(); \
+}
+#define E_TIER { \
+    color = KHAKI; \
+    textAccent = 2; \
+    showLootBeam = false; \
+	textAccentColor = "99000000"; \
+}
+#define F_TIER { \
+    color = SCUFFED; \
+    textAccent = 2; \
+    showLootBeam = false; \
+	textAccentColor = "00000000"; \
+}
+
+#define RUNE_ALCH { \
+    color = TRUNE; \
+    textAccent = 2; \
+    showLootBeam = false; \
+	textAccentColor = "99000000"; \
+	menuTextColor = TRUNE; \
+	icon = Sprite(41, 0); \
+}
+
+#define RUNE_NA { \
+    color = TRUNE; \
+    textAccent = 2; \
+    showLootBeam = false; \
+	textAccentColor = "99000000"; \
+	menuTextColor = TRUNE; \
+	icon = CurrentItem(); \
+}
+
+#define ADDY_ALCH { \
+    color = TADDY; \
+    textAccent = 2; \
+    showLootBeam = false; \
+	textAccentColor = "99000000"; \
+	menuTextColor = ADDY; \
+	icon = Sprite(41, 0); \
+}
+
+#define MITH_ALCH { \
+    color = "bb444499"; \
+    textAccent = 2; \
+    showLootBeam = false; \
+	textAccentColor = "99000000"; \
+	menuTextColor = "bb444499"; \
+	icon = Sprite(41, 0); \
+}
+
+#define SEED { \
+    color = TADDY; \
+    textAccent = 2; \
+    showLootBeam = false; \
+	textAccentColor = "99000000"; \
+	menuTextColor = ADDY; \
+	icon = CurrentItem(); \
+}
+
+#define HERB { \
+    color = TADDY; \
+    textAccent = 2; \
+    showLootBeam = false; \
+	textAccentColor = "99000000"; \
+	menuTextColor = ADDY; \
+	icon = CurrentItem(); \
+}
+
+#define HERB_SECONDARY { \
+    color = TRUNE; \
+    textAccent = 2; \
+    showLootBeam = false; \
+	textAccentColor = "99000000"; \
+	menuTextColor = TRUNE; \
+	icon = CurrentItem(); \
+}
+
+#define SEED_RARE { \
+    color = TADDY; \
+    textAccent = 2; \
+    showLootBeam = false; \
+	lootBeamColor = TADDY; \
+	textAccentColor = "99000000"; \
+	showLootBeam = true; \
+	menuTextColor = ADDY; \
+	icon = CurrentItem(); \
+	sound = "Az_uncommon.wav"; \
+}
+
+#define TRANS_GOLD { \
+    color = TGOLD; \
+    textAccent = 2; \
+	textAccentColor = "99000000"; \
+    showLootBeam = false; \
+	menuTextColor = GOLD; \
+	icon = CurrentItem(); \
+}
+
+#define TRANS_BLACK { \
+    color = DARK; \
+    textAccent = 2; \
+    showLootBeam = false; \
+	textAccentColor = "99000000"; \
+	menuTextColor = DARK; \
+}
+
+#define HI_RED { \
+    color = RED; \
+    textAccent = 2; \
+    showLootBeam = false; \
+	menuTextColor = RED; \
+	textAccentColor = "99000000"; \
+	icon = CurrentItem(); \
+}
+#define HI_BLUE { \
+    color = BLUE; \
+    textAccent = 2; \
+    showLootBeam = false; \
+	menuTextColor = BLUE; \
+	textAccentColor = "99000000"; \
+	icon = CurrentItem(); \
+}
+#define HI_GREEN { \
+    color = GREEN; \
+    textAccent = 2; \
+    showLootBeam = false; \
+	menuTextColor = GREEN; \
+	textAccentColor = "99000000"; \
+	icon = CurrentItem(); \
+}
+#define HI_PURPLE { \
+    color = PURPLE; \
+    textAccent = 2; \
+    showLootBeam = false; \
+	menuTextColor = PURPLE; \
+	textAccentColor = "99000000"; \
+	icon = CurrentItem(); \
+}
+
+#define HI_BLACK { \
+    color = "bb414141"; \
+    textAccent = 2; \
+    showLootBeam = false; \
+	menuTextColor = "bb414141"; \
+	textAccentColor = "99000000"; \
+	icon = CurrentItem(); \
+}
+
+#define OUT_GOLD { \
+    color = GOLD; \
+    textAccent = 2; \
+    showLootBeam = true; \
+	menuTextColor = GOLD; \
+	textAccentColor = "99000000"; \
+}
+
+#define BONES { \
+    color = "bbcccccc"; \
+    textAccent = 2; \
+    showLootBeam = false; \
+	menuTextColor = "bbcccccc"; \
+	textAccentColor = "99000000"; \
+}
+
+#define HIDDEN { \
+    color = TRANS; \
+	hidden = true; \
+    textAccent = 3; \
+    showLootBeam = false; \
+	menuTextColor = SCUFFED; \
+}
+
+#define CLUE_MASTER { \
+    COLOR3("bb9B3026", DARK) \
+    textAccent = 3; \
+    showLootBeam = true; \
+	menuTextColor = "bb9B3026"; \
+	lootBeamColor = WHITE; \
+	sound = "Az_clue.wav"; \
+	icon = CurrentItem(); \
+}
+
+#define CLUE_ELITE { \
+    COLOR3("bbBDA518", DARK) \
+    textAccent = 3; \
+    showLootBeam = true; \
+	menuTextColor = "bbBDA518"; \
+	lootBeamColor = WHITE; \
+	sound = "Az_clue.wav"; \
+	icon = CurrentItem(); \
+}
+
+#define CLUE_HARD { \
+    COLOR3("bb833798", DARK) \
+    textAccent = 3; \
+    showLootBeam = true; \
+	menuTextColor = "bb833798"; \
+	lootBeamColor = WHITE; \
+	sound = "Az_clue.wav"; \
+	icon = CurrentItem(); \
+}
+
+#define CLUE_MEDIUM { \
+    COLOR3("bb569699", DARK) \
+    textAccent = 3; \
+    showLootBeam = true; \
+	menuTextColor = "bb569699"; \
+	lootBeamColor = WHITE; \
+	sound = "Az_clue.wav"; \
+	icon = CurrentItem(); \
+}
+#define CLUE_EASY { \
+    COLOR3(DARK_GREEN, DARK) \
+    textAccent = 3; \
+    showLootBeam = true; \
+	menuTextColor = DARK_GREEN; \
+	lootBeamColor = WHITE; \
+	sound = "Az_clue.wav"; \
+	icon = CurrentItem(); \
+}
+
+#define CLUE_BEGINNER { \
+    COLOR3(DARK_GREEN, DARK) \
+    textAccent = 3; \
+    showLootBeam = true; \
+	menuTextColor = DARK_GREEN; \
+	lootBeamColor = WHITE; \
+	sound = "Az_clue.wav"; \
+	icon = CurrentItem(); \
+}
+
+
+#define DEFAULT_STYLE { color = RED; textAccent = 2; menuTextColor = "bb888888"; }
+
+#define VALUE_S_TIER (_name) if (name:_name) S_TIER
+#define VALUE_A_TIER (_name) if (name:_name) A_TIER
+#define VALUE_B_TIER (_name) if (name:_name) B_TIER
+#define VALUE_C_TIER (_name) if (name:_name) C_TIER
+#define VALUE_D_TIER (_name) if (name:_name) D_TIER
+#define VALUE_E_TIER (_name) if (name:_name) E_TIER
+#define VALUE_F_TIER (_name) if (name:_name) F_TIER
+
+//CLUES
+if (name:"* (beginner)") CLUE_BEGINNER
+if (name:"* (easy)") CLUE_EASY
+if (name:"* (medium)") CLUE_MEDIUM
+if (name:"* (hard)") CLUE_HARD
+if (name:"* (elite)") CLUE_ELITE
+if (name:"* (master)") CLUE_MASTER
+
+
+// Misc Uniques
+UNIQUE_A_TIER("Uncut onyx")
+UNIQUE_A_TIER("Onyx")
+UNIQUE_A_TIER("*champion scroll")
+UNIQUE_S_TIER("Blood shard")
+UNIQUE_B_TIER("Dark totem")
+UNIQUE_A_TIER("Enhanced crystal teleport seed")
+UNIQUE_C_TIER("Dark totem top")
+UNIQUE_C_TIER("Dark totem base")
+UNIQUE_C_TIER("Dark totem middle")
+UNIQUE_C_TIER("Chewed bones")
+
+UNIQUE_B_TIER("Glacial temotli")
+UNIQUE_B_TIER("Pendant of the ates (inert)")
+
+UNIQUE_S_TIER("Noxious*")
+UNIQUE_S_TIER("Araxyte fang")
+UNIQUE_C_TIER("Spider cave teleport")
+UNIQUE_A_TIER("Araxyte head")
+
+UNIQUE_A_TIER("Ahrim's*")
+UNIQUE_A_TIER("Karil's*")
+UNIQUE_A_TIER("Verac's*")
+UNIQUE_A_TIER("Dharok's*")
+UNIQUE_A_TIER("Guthan's*")
+UNIQUE_A_TIER("Torag's*")
+
+UNIQUE_S_TIER("Bryophyta's essence")
+
+UNIQUE_S_TIER("Primordial crystal")
+UNIQUE_S_TIER_GREEN("Pegasian crystal")
+UNIQUE_S_TIER_BLUE("Eternal crystal")
+UNIQUE_A_TIER("Smouldering stone")
+UNIQUE_C_TIER("Key master teleport")
+
+
+UNIQUE_S_TIER("Saradomin hilt")
+UNIQUE_S_TIER("Armadyl crossbow")
+UNIQUE_C_TIER("Saradomin sword")
+UNIQUE_B_TIER("Saradomin's light")
+UNIQUE_A_TIER("Godsword shard*")
+
+UNIQUE_S_TIER("Elysian sigil")
+UNIQUE_A_TIER("Arcane sigil")
+UNIQUE_A_TIER("Spectral sigil")
+UNIQUE_B_TIER("Holy elixir")
+UNIQUE_C_TIER("Spirit shield")
+
+UNIQUE_S_TIER("Berserker ring")
+UNIQUE_S_TIER_GREEN("Archers ring")
+UNIQUE_S_TIER_BLUE("Seers ring")
+UNIQUE_C_TIER("Warrior ring")
+UNIQUE_B_TIER("Seercull")
+UNIQUE_B_TIER("Mud battlestaff")
+
+UNIQUE_S_TIER("Virtus*")
+UNIQUE_S_TIER("*vestige")
+UNIQUE_B_TIER("*quartz")
+UNIQUE_B_TIER("Chromium ingot")
+UNIQUE_B_TIER("Awakener's orb")
+
+UNIQUE_S_TIER("Bandos chestplate")
+UNIQUE_S_TIER("Bandos tassets")
+UNIQUE_A_TIER("Bandos boots")
+UNIQUE_S_TIER("Bandos hilt")
+
+UNIQUE_C_TIER("Granite gloves")
+UNIQUE_C_TIER("Granite ring")
+UNIQUE_C_TIER("Granite hammer")
+UNIQUE_A_TIER("Black tourmaline core")
+
+UNIQUE_S_TIER("Dragon hunter wand")
+UNIQUE_S_TIER("Tome of earth (empty)")
+UNIQUE_A_TIER("Hueycoatl hide")
+UNIQUE_C_TIER("Huasca seed")
+
+UNIQUE_S_TIER("Dragon pickaxe")
+UNIQUE_B_TIER("Dragon chainbody")
+UNIQUE_C_TIER("Dragon 2h sword")
+
+UNIQUE_B_TIER("Kraken tentacle")
+UNIQUE_A_TIER("Trident of the seas*")
+UNIQUE_A_TIER("Uncharged trident")
+
+UNIQUE_S_TIER("Armadyl chestplate")
+UNIQUE_S_TIER("Armadyl chainskirt")
+UNIQUE_A_TIER("Armadyl helmet")
+UNIQUE_S_TIER("Armadyl hilt")
+
+UNIQUE_S_TIER("Staff of the dead")
+UNIQUE_A_TIER("Zamorakian spear")
+UNIQUE_S_TIER("Zamorak hilt")
+UNIQUE_B_TIER("Steam battlestaff")
+
+UNIQUE_S_TIER("Blood moon*")
+UNIQUE_S_TIER("Blue moon*")
+UNIQUE_S_TIER("Eclipse moon*")
+
+UNIQUE_S_TIER("Inquisitor*")
+UNIQUE_S_TIER("Eldrich orb")
+UNIQUE_S_TIER("Harmonised orb")
+UNIQUE_S_TIER("Volatile orb")
+UNIQUE_S_TIER("Nightmare staff")
+UNIQUE_S_TIER("Parasitic egg")
+UNIQUE_A_TIER("Slepey tablet")
+
+UNIQUE_S_TIER("Venator shard")
+UNIQUE_B_TIER("Ancient icon")
+UNIQUE_A_TIER("Charged ice")
+UNIQUE_C_TIER("Frozen cache")
+
+UNIQUE_A_TIER("Deadeye prayer scroll")
+UNIQUE_A_TIER("Mystic vigour prayer scroll")
+UNIQUE_C_TIER("Giantsoul amulet")
+UNIQUE_A_TIER("Ice element staff crown")
+UNIQUE_A_TIER("Fire element staff crown")
+
+//Sarachnis
+UNIQUE_C_TIER("Sarachnis cudgel")
+UNIQUE_C_TIER("Giant egg sac*")
+
+UNIQUE_S_TIER("Smoke battlestaff")
+UNIQUE_A_TIER("Occult necklace")
+
+UNIQUE_A_TIER("Vorkath's head")
+UNIQUE_S_TIER("Skeletal visage")
+UNIQUE_A_TIER("Dragonbone necklace")
+
+UNIQUE_S_TIER("Wyvern visage")
+
+UNIQUE_S_TIER("Infernal Cape")
+UNIQUE_S_TIER("Fire Cape")
+UNIQUE_S_TIER("Dizana's Quiver*")
+if (name:"*Max Cape") S_TIER
+
+UNIQUE_B_TIER("Mossy key")
+UNIQUE_B_TIER("Giant key")
+VALUE_A_TIER("Hill giant club")
+
+UNIQUE_B_TIER("Ecumenical key")
+UNIQUE_C_TIER("Long bone")
+UNIQUE_C_TIER("Curved bone")
+if (name:"Looting bag") TRANS_GOLD
+
+UNIQUE_C_TIER("Unidentified small fossil")
+UNIQUE_C_TIER("Unidentified medium fossil")
+UNIQUE_C_TIER("Unidentified large fossil")
+UNIQUE_C_TIER("Unidentified rare fossil")
+
+TEXT_HIGHLIGHT("Bronze defender", BRONZE)
+TEXT_HIGHLIGHT("Iron defender", IRON)
+TEXT_HIGHLIGHT("Steel defender", STEEL)
+TEXT_HIGHLIGHT("Black defender", BLACK)
+TEXT_HIGHLIGHT("Mithril defender", MITHRIL)
+TEXT_HIGHLIGHT("Adamant defender", ADAMANT)
+TEXT_HIGHLIGHT("Rune defender", RUNITE)
+TEXT_HIGHLIGHT("Dragon defender", RED)
+
+//meme tier
+UNIQUE_M_TIER("Magic longbow (u)")
+
+// Slayer Uniques
+
+UNIQUE_C_TIER("Ancient page")
+UNIQUE_B_TIER("Chewed bones")
+UNIQUE_A_TIER("Jar of*")
+UNIQUE_A_TIER("Abyssal head")
+UNIQUE_A_TIER("Araxyte head")
+UNIQUE_A_TIER("Alchemical hydra heads")
+UNIQUE_A_TIER("Kbd heads")
+UNIQUE_A_TIER("Kq head*")
+UNIQUE_B_TIER("Dark claw")
+UNIQUE_C_TIER("Dragon boots")
+UNIQUE_B_TIER("Dark bow")
+UNIQUE_A_TIER("Drake's claw")
+UNIQUE_A_TIER("Drake's tooth")
+UNIQUE_C_TIER("Key master teleport")
+UNIQUE_S_TIER("Draconic visage")
+UNIQUE_A_TIER("Abyssal whip")
+UNIQUE_B_TIER("Dragon sword")
+UNIQUE_A_TIER("Dragon harpoon")
+UNIQUE_S_TIER("Abyssal dagger")
+UNIQUE_S_TIER("Imbued heart")
+UNIQUE_S_TIER("Eternal gem")
+UNIQUE_C_TIER("Mist battlestaff")
+UNIQUE_B_TIER("Dust battlestaff")
+UNIQUE_B_TIER("Broken zombie axe")
+UNIQUE_B_TIER("Broken zombie helmet")
+UNIQUE_A_TIER("Warped sceptre*")
+UNIQUE_B_TIER("Leaf-bladed sword")
+UNIQUE_A_TIER("Leaf-bladed battleaxe")
+UNIQUE_A_TIER("Black mask")
+UNIQUE_B_TIER("Granite maul")
+UNIQUE_B_TIER("Flippers")
+UNIQUE_B_TIER("Mudskipper hat")
+UNIQUE_B_TIER("Brine sabre")
+UNIQUE_S_TIER("Basilisk jaw")
+UNIQUE_A_TIER("Aranea boots")
+UNIQUE_A_TIER("Elder chaos*")
+UNIQUE_S_TIER("Zenyte shard")
+UNIQUE_B_TIER("Light frame")
+UNIQUE_B_TIER("Heavy frame")
+UNIQUE_B_TIER("Ballista limbs")
+UNIQUE_B_TIER("Ballista spring")
+UNIQUE_A_TIER("Monkey tail")
+UNIQUE_S_TIER("Viggora's chainmace (u)")
+UNIQUE_S_TIER("Craw's bow (u)")
+UNIQUE_S_TIER("Thammaron's sceptre (u)")
+UNIQUE_B_TIER("Amulet of avarice")
+UNIQUE_S_TIER("Tormented synapse")
+UNIQUE_A_TIER("Burning claw")
+UNIQUE_S_TIER("Dragon warhammer")
+UNIQUE_A_TIER("Dragon limbs")
+UNIQUE_S_TIER("Dragon metal lump")
+UNIQUE_S_TIER("Dragon metal slice")
+UNIQUE_S_TIER("Dragon full helm")
+UNIQUE_B_TIER("Xeric's talisman (inert)")
+UNIQUE_C_TIER("Sulphur blades")
+
+//Yama
+UNIQUE_S_TIER("Oathplate helm")
+UNIQUE_S_TIER("Oathplate chest")
+UNIQUE_S_TIER("Oathplate legs")
+UNIQUE_B_TIER("Oathplate shards")
+UNIQUE_C_TIER("Dossier")
+UNIQUE_A_TIER("Soulflame horn")
+UNIQUE_C_TIER("Chasm teleport scroll")
+UNIQUE_C_TIER("Diabolic worms")
+UNIQUE_C_TIER("Forgotten lockbox")
+UNIQUE_C_TIER("Barrel of demonic tallow (full)")
+
+//Nex
+UNIQUE_S_TIER("Nihil horn")
+UNIQUE_S_TIER("Torva *")
+UNIQUE_S_TIER("Zaryte vambraces")
+UNIQUE_C_TIER("Blood essence")
+
+//Tzhaar
+UNIQUE_B_TIER("Tzhaar-ket-om")
+UNIQUE_B_TIER("Toktz-ket-xil")
+UNIQUE_B_TIER("Toktz-mej-tal")
+UNIQUE_B_TIER("Toktz-xil-ak")
+UNIQUE_B_TIER("Toktz-xil-ek")
+UNIQUE_C_TIER("Toktz-xil-ul")
+UNIQUE_B_TIER("Obsidian cape")
+UNIQUE_A_TIER("Obsidian *")
+
+// Abyssal Sire Uniques
+UNIQUE_S_TIER("Unsired")
+UNIQUE_B_TIER("Bludgeon claw")
+UNIQUE_B_TIER("Bludgeon spine")
+UNIQUE_B_TIER("Bludgeon axon")
+
+// Araxxor Uniques
+RARE_CUSTOM("Araxyte fang", DARK_GREEN, BLACK)
+UNIQUE_A_TIER("Noxious pommel")
+UNIQUE_A_TIER("Noxious point")
+UNIQUE_A_TIER("Noxious blade")
+
+// Hydra
+UNIQUE_B_TIER("Hydra's eye")
+UNIQUE_B_TIER("Hydra's fang")
+UNIQUE_B_TIER("Hydra's heart")
+UNIQUE_B_TIER("Hydra tail")
+UNIQUE_S_TIER("Hydra's claw")
+UNIQUE_A_TIER("Hydra leather")
+
+// Desert Treasure 2 Boss Uniques
+UNIQUE_S_TIER("Ancient blood ornament kit")
+UNIQUE_C_TIER("Chromium ingot")
+
+// Vardorvis
+UNIQUE_S_TIER("Ultor vestige")
+UNIQUE_S_TIER("Executioner's axe head")
+UNIQUE_B_TIER("Strangled tablet")
+UNIQUE_C_TIER("Blood quartz")
+
+// Leviathan
+UNIQUE_S_TIER("Venator vestige")
+UNIQUE_S_TIER("Leviathan's lure")
+UNIQUE_B_TIER("Scarred tablet")
+UNIQUE_C_TIER("Smoke quartz")
+
+// Whisperer
+UNIQUE_S_TIER("Bellator vestige")
+UNIQUE_S_TIER("Siren's staff")
+UNIQUE_B_TIER("Sirenic tablet")
+UNIQUE_C_TIER("Shadow quartz")
+
+// Duke Sucellus
+UNIQUE_S_TIER("Magus vestige")
+UNIQUE_S_TIER("Eye of the duke")
+UNIQUE_B_TIER("Frozen tablet")
+UNIQUE_C_TIER("Ice quartz")
+
+// Scurrius
+UNIQUE_B_TIER("Scurrius' spine")
+
+// Amoxliatl
+UNIQUE_A_TIER("*half of key (moon key)")
+UNIQUE_C_TIER("Pendant of ates*")
+
+// Zulrah
+UNIQUE_S_TIER("*mutagen")
+UNIQUE_S_TIER("Tanzanite fang")
+UNIQUE_S_TIER("Magic fang")
+UNIQUE_S_TIER("Serpentine visage")
+
+// Muspah
+UNIQUE_C_TIER("Frozen cache")
+UNIQUE_C_TIER("Ancient icon")
+UNIQUE_C_TIER("Charged Ice")
+
+// Nightmare
+UNIQUE_S_TIER("Slepey Tablet")
+UNIQUE_C_TIER("Parasitic egg")
+TEXT_HIGHLIGHT("Ancient shard", MAGENTA)
+
+// Tormented Demons Supplies
+DARK_BG("Smouldering pile of flesh", RED)
+DARK_BG("Smouldering gland", CYAN)
+DARK_BG("Smouldering heart", MAGENTA)
+
+// ToA
+TEXT_HIGHLIGHT("Ambrosia*", "bbE3ECE3")
+TEXT_HIGHLIGHT("Liquid adrenaline*", "bb35C6D7")
+TEXT_HIGHLIGHT("Nectar*", YELLOW)
+TEXT_HIGHLIGHT("Tears of elidinis*", "bbe91e63")
+
+// Potions
+TEXT_HIGHLIGHT("Super restore*", "bbe91e63")
+TEXT_HIGHLIGHT("Saradomin brew*", YELLOW)
+TEXT_HIGHLIGHT("Prayer potion*", "bb59D6AE")
+TEXT_HIGHLIGHT("Sanfew serum*", "bbe59e9e")
+TEXT_HIGHLIGHT("Super combat potion*", "bb2a9e16")
+TEXT_HIGHLIGHT("Super attack*", "bb4466aa")
+TEXT_HIGHLIGHT("Super defence*", "bbf5d742")
+TEXT_HIGHLIGHT("Super str*", "bb999999")
+TEXT_HIGHLIGHT("Extended antifire*", "bb9f26f0")
+if (name:"Araxyte venom sack") SEED
+
+TEXT_HIGHLIGHT("Divine Super combat potion*", "bb2a9e16")
+TEXT_HIGHLIGHT("Ranging potion*", "bb5FB7DA")
+TEXT_HIGHLIGHT("Divine Ranging potion*", "bb5FB7DA")
+TEXT_HIGHLIGHT("Bastion potion*", "bbdb721c")
+TEXT_HIGHLIGHT("Divine Bastion potion*", "bbdb721c")
+
+// Runes
+TEXT_HIGHLIGHT("Blood rune", "bbaa3333")
+TEXT_HIGHLIGHT("Death rune", "bbffffff")
+TEXT_HIGHLIGHT("Nature rune", "bb44cc44")
+TEXT_HIGHLIGHT("Chaos rune", "bbe6b815")
+TEXT_HIGHLIGHT("Law rune", "bb5577CB")
+TEXT_HIGHLIGHT("Wrath rune", "bb454545")
+TEXT_HIGHLIGHT("Cosmic rune", "bbfae632")
+TEXT_HIGHLIGHT("Soul rune", "bb5298d1")
+
+TEXT_HIGHLIGHT("Water rune", "bb5555dd")
+TEXT_HIGHLIGHT("Fire rune", "bbcc2222")
+TEXT_HIGHLIGHT("Air rune", "bbcccccc")
+TEXT_HIGHLIGHT("Earth rune", "bb805b00")
+
+//moved here because of dwh
+TEXT_HIGHLIGHT("Dragon *", "bbcf3232")
+
+// Value Style defaults
+if (value:>VALUE_TIER_S) S_TIER
+if (value:>VALUE_TIER_A) A_TIER
+if (value:>VALUE_TIER_B) B_TIER
+if (value:>VALUE_TIER_C) C_TIER
+if (value:>VALUE_TIER_D) D_TIER
+if (value:>VALUE_TIER_E) E_TIER
+if (value:<VALUE_HIDE) HIDDEN
+if (value:<VALUE_TIER_E) F_TIER
+
+// Misc Valuable/Stackable Items (Comment or remove any you don't want to see under min value)
+VALUE_D_TIER("Frozen tear")
+VALUE_D_TIER("Zulrah's scales")
+if (name:"Zulrah's scales" && quantity:>500) HI_BLUE
+if (name:"Zulrah's scales") HI_GREEN
+VALUE_D_TIER("Sunfire splinters")
+VALUE_D_TIER("Ancient essence")
+VALUE_D_TIER("Granite dust")
+
+// Tradeable Currencies (Comment or remove any you don't want to see under min value)
+VALUE_E_TIER("Archery ticket")
+VALUE_E_TIER("Mole claw")
+VALUE_E_TIER("Mole skin")
+VALUE_E_TIER("Trading sticks")
+VALUE_E_TIER("Shantay pass")
+VALUE_E_TIER("Ship ticket")
+// VALUE_E_TIER("Numulite")
+
+// Untradeable Currencies
+VALUE_E_TIER("Abyssal pearls")
+VALUE_E_TIER("Anima-infused bark")
+VALUE_E_TIER("Agility arena ticket")
+VALUE_E_TIER("Barronite shards")
+VALUE_E_TIER("Blood money")
+VALUE_E_TIER("Brimhaven voucher")
+VALUE_E_TIER("Castle wars ticket")
+VALUE_E_TIER("Ecto-token")
+VALUE_E_TIER("Frog token")
+VALUE_E_TIER("Golden nugget")
+VALUE_E_TIER("Glistening tear")
+VALUE_E_TIER("Hallowed mark")
+VALUE_E_TIER("Intelligence")
+VALUE_E_TIER("Mark of grace")
+VALUE_E_TIER("Mermaid's tear")
+VALUE_E_TIER("Minnow")
+VALUE_E_TIER("Molch pearl")
+VALUE_E_TIER("Nuggets")
+VALUE_E_TIER("Paramaya ticket")
+VALUE_E_TIER("Rare creature parts")
+VALUE_E_TIER("Reward token credits")
+VALUE_E_TIER("Stardust")
+VALUE_E_TIER("Tokkul")
+VALUE_E_TIER("Termites")
+VALUE_E_TIER("Unidentified minerals")
+VALUE_E_TIER("Warrior guild token")
+VALUE_E_TIER("Blessed bone shards")
+VALUE_E_TIER("Sun-kissed bones")
+VALUE_E_TIER("Ecumenical key shard")
+if (name:"* bones") BONES
+
+// Hide specific single/un-noted items
+HIDE_1("*ashes")
+
+// Catch all to display untradeables
+
+if (tradeable: false) {
+    color = WHITE; \
+	textAccent = 2; \
+}
+if (tradeable: true) {
+    color = WHITE; \
+	textAccent = 2; \
+}
+
+
