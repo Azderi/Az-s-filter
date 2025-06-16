@@ -6,7 +6,8 @@ The filter is built around naturally appearing ground-items, meaning it will not
 
 Value tiers should almost never trigger since every unique on the clog have been defined to use the unique sound. Don't worry about gooning sound.
 
-16/06/2025";
+16/06/2025
+https://github.com/Azderi/az-s-filter";
 }
 
 #define VAR_OWNERSHIP_HIDEOTHER true
